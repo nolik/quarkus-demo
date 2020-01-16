@@ -29,6 +29,10 @@ public class Location extends PanacheEntity {
         this.companyId = companyId;
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public String getName() {
         return name;
     }
@@ -47,5 +51,25 @@ public class Location extends PanacheEntity {
 
     public Long getCompanyId() {
         return companyId;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setCompanyId(Long companyId) {
+        this.companyId = companyId;
     }
 }

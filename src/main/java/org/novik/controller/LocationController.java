@@ -1,24 +1,45 @@
 package org.novik.controller;
 
-import org.novik.dto.LocationSummary;
+import org.novik.model.Location;
 import org.novik.service.LocationService;
 
 import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
+import javax.ws.rs.*;
 import java.util.List;
 
 @Path("/locations")
+@Produces("application/json")
+@Consumes("application/json")
 public class LocationController {
 
     @Inject
     LocationService locationService;
 
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<LocationSummary> getLocations() {
+    public List<Location> getLocations() {
         return locationService.getLocations();
+    }
+
+    @GET
+    @Path("/{id}")
+    public Location getLocation(@PathParam("id") Long id) {
+        return locationService.getLocation(id);
+    }
+
+    @POST
+    public Location createLocation(Location location) {
+        return locationService.createLocation(location);
+    }
+
+    @PUT
+    @Path("/{id}")
+    public Location updateLocation(@PathParam("id") Long id, Location location) {
+        return locationService.updateLocation(id, location);
+    }
+
+    @DELETE
+    @Path("{id}")
+    public void deleteLocation(@PathParam("id") Long id) {
+        locationService.deleteLocation(id);
     }
 }
