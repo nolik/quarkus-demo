@@ -19,9 +19,7 @@ public class LocationService {
     }
 
     @Transactional
-    public Location createLocation(Location location) {
-        location.persist();
-
+    public Location createLocation(Location location) { location.persist();
         return location;
     }
 
